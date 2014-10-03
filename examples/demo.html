@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html lang="en" class="ie8"><![endif]-->
+<!--[if IE 9 ]><html lang="en" class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>jQuery thumbnail/image scroller demo</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!-- stylesheet for demo and examples -->
+	<link rel="stylesheet" href="style.css">
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<![endif]-->
+	
+	<!-- plugin stylesheet -->
+	<link rel="stylesheet" href="../jquery.mThumbnailScroller.css">
+	
+	<!-- demo CSS -->
+	<style>
+		.content{
+			overflow: auto;
+			position: relative;
+			padding: 10px;
+			background-color: #333;
+			margin: 20px;
+			width: 50%;
+			height: auto;
+			float: left;
+		}
+		.content li{
+			margin: 4px;
+			overflow: hidden;
+		}
+		.content li a{
+			display: inline-block;
+			border: 7px solid rgba(255,255,255,.1);
+		}
+		.content.light, .content.light .mTSButton{ background-color: #c2beb2; }
+		.content.light li a{ border: 7px solid rgba(255,255,255,.4); }
+		#content-1, #content-2{
+			width: auto;
+			height: 600px;
+		}
+		#content-1 ul li:first-child{ margin-top: 20px; }
+		#content-1 ul li:last-child{ margin-bottom: 20px; }
+		#content-2{ padding: 55px 10px; }
+		#content-3 .mTSButton{ background-color: #333; }
+		#content-5{ background-color: #444; }
+		#content-6{ background-color: transparent; }
+		#content-6 .mTSButton{
+			background-color: rgba(0,0,0,.7);
+			-moz-border-radius: 48px; -webkit-border-radius: 48px; border-radius: 48px;
+		}
+		#content-6 .mTSButtonLeft{ left: 5px; }
+		#content-6 .mTSButtonRight{ right: 5px; }
+	</style>
+	
+</head>
+
+<body>
+	<header>
+		<h1><a href="http://manos.malihu.gr/jquery-thumbnail-scroller" class="logo">jQuery thumbnail/image scroller</a></h1>
+		<hr />
+	</header>
+	
+	<div id="demo">
+		<section id="examples">
+			
+			<!-- demo content -->
+			<div id="content-1" class="content">
+				<ul>
+					<li><a href="#"><img src="thumbnails/img3.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img7.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img11.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img15.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img20.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img3.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img7.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img11.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img15.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img20.jpg" /></a></li>
+				</ul>
+			</div>
+			<!-- -//- -->
+			
+			<!-- demo content -->
+			<div id="content-2" class="content light">
+				<ul>
+					<li><a href="#"><img src="thumbnails/img20.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img15.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img11.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img7.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img3.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img20.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img15.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img11.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img7.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img3.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img20.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img15.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img11.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img7.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img3.jpg" /></a></li>
+				</ul>
+			</div>
+			<!-- -//- -->
+			
+			<!-- demo content -->
+			<div id="content-3" class="content">
+				<ul>
+					<li><a href="#"><img src="thumbnails/img1.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img2.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img3.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img4.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img5.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img6.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img7.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img8.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img9.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img10.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img11.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img12.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img13.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img14.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img15.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img16.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img17.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img18.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img19.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img20.jpg" /></a></li>
+				</ul>
+			</div>
+			<!-- -//- -->
+			
+			<!-- demo content -->
+			<div id="content-4" class="content light">
+				<ul>
+					<li><a href="#"><img src="thumbnails/img1.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img2.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img3.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img4.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img5.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img6.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img7.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img8.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img9.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img10.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img11.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img12.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img13.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img14.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img15.jpg" /></a></li>
+				</ul>
+			</div>
+			<!-- -//- -->
+			
+			<!-- demo content -->
+			<div id="content-5" class="content">
+				<ul>
+					<li><a href="#"><img src="thumbnails/img1.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img2.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img3.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img4.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img5.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img6.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img7.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img8.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img9.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img10.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img11.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img12.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img13.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img14.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img15.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img16.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img17.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img18.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img19.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img20.jpg" /></a></li>
+				</ul>
+			</div>
+			<!-- -//- -->
+			
+			<!-- demo content -->
+			<div id="content-6" class="content">
+				<ul>
+					<li><a href="#"><img src="thumbnails/img1.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img2.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img3.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img4.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img5.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img6.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img7.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img8.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img9.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img10.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img11.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img12.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img13.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img14.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img15.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img16.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img17.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img18.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img19.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img20.jpg" /></a></li>
+				</ul>
+			</div>
+			<!-- -//- -->
+			
+		</section>
+	</div>
+	
+	<footer>
+		<hr />
+		<p><a href="http://manos.malihu.gr/jquery-thumbnail-scroller">Plugin home</a> <a href="http://opensource.org/licenses/MIT">MIT License</a></p>
+	</footer>
+	
+	<!-- Google CDN jQuery with fallback to local -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="../js/minified/jquery-1.11.0.min.js"><\/script>')</script>
+	
+	<!-- plugin script -->
+	<script src="../jquery.mThumbnailScroller.js"></script>
+	
+	<script>
+		(function($){
+			$(window).load(function(){
+				
+				$("#content-1").mThumbnailScroller({
+					axis:"y",
+					type:"hover-precise"
+				});
+				
+				$("#content-2").mThumbnailScroller({
+					axis:"y",
+					type:"click-thumb",
+					theme:"buttons-out"
+				});
+				
+				$("#content-3").mThumbnailScroller({
+					type:"click-50",
+					theme:"buttons-in"
+				});
+				
+				$("#content-4").mThumbnailScroller({
+					theme:"hover-classic"
+				});
+				
+				$("#content-5").mThumbnailScroller({
+					type:"hover-precise"
+				});
+				
+				$("#content-6").mThumbnailScroller({
+					type:"click-25",
+				});
+				
+			});
+		})(jQuery);
+	</script>
+</body>
+</html>

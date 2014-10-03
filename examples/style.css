@@ -1,0 +1,128 @@
+/* stylesheet for demo and examples */
+
+@import url(http://fonts.googleapis.com/css?family=Lobster+Two:700italic,700);
+
+body{
+	background-color: #222;
+	color: #eee;
+	font-size: 14px;
+	font-family: "Verdana",Geneva,sans-serif;
+	margin: 0;
+	padding: 0;
+	min-width: 480px;
+}
+
+a{
+	color: inherit;
+	-webkit-transition: all .2s ease-in-out;
+	-moz-transition: all .2s ease-in-out;
+	-o-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+}
+
+a:hover{
+	text-decoration: none;
+	color: #fff;
+}
+
+h1, h2, h3{
+	font-family: "Lobster Two", "Georgia", serif;
+	font-weight: 700;
+	font-style: italic;
+	color: #6bdaea;
+}
+
+hr{
+	background-color: transparent;
+	height: 0;
+	border: none;
+	border-bottom: 1px solid rgba(255,255,255,0.08);
+	border-top: 1px solid rgba(0,0,0,0.9);
+	margin: 0;
+	clear: both;
+}
+
+header, #demo, footer{
+	position: relative;
+	margin: 0 auto;
+	width: 90%;
+	padding: 0 30px;
+}
+
+header{
+	margin-top: 30px;
+	margin-bottom: 40px;
+}
+
+#demo{ line-height: 20px; }
+
+header h1 a{
+	text-decoration: none;
+}
+
+header hr{ margin-top: 20px; }
+
+.title{
+	display: inline-block;
+	font-size: 32px;
+	vertical-align: middle;
+	margin-right: 40px;
+	line-height: 24px;
+}
+
+.title{ margin-top: 5px; }
+
+h1{
+	margin: 20px 0;
+	color: inherit;
+}
+
+img{
+	max-width: 100%;
+	height: auto;
+}
+
+#info p{
+	font-size: 12px;
+	color: #bbb;
+	padding: 6px 15px;
+}
+
+#info p a{
+	margin: 0 5px;
+}
+
+#info .callbacks span{
+	color: #fff;
+}
+
+#examples{
+	background-color: #191919;
+	background-color: rgba(0,0,0,0.3);
+	padding: 5px;
+	margin: 10px 0;
+	overflow: hidden;
+}
+
+#examples{
+	background-color: #191919;
+	background-color: rgba(0,0,0,0.3);
+	padding: 5px;
+	margin: 10px 0;
+	overflow: hidden;
+}
+
+#examples.light{
+	background-color: #333;
+}
+
+#examples > hr{ margin: 20px 10px; }
+
+footer{
+	margin-top: 40px;
+	margin-bottom: 40px;
+	color: #bbb;
+	font-size: 12px;
+}
+
+footer a{ margin-right: 20px; }

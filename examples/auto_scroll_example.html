@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html lang="en" class="ie8"><![endif]-->
+<!--[if IE 9 ]><html lang="en" class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>jQuery thumbnail/image scroller demo</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!-- stylesheet for demo and examples -->
+	<link rel="stylesheet" href="style.css">
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<![endif]-->
+	
+	<!-- plugin stylesheet -->
+	<link rel="stylesheet" href="../jquery.mThumbnailScroller.css">
+	
+	<!-- demo CSS -->
+	<style>
+		.content{
+			overflow: hidden;
+			height: 114px;
+			position: relative;
+			padding: 10px;
+			background: #333;
+			margin: 10px auto;
+			width: 85%;
+		}
+		.content li{ margin: 0 4px; }
+		.content li a{
+			display: block;
+			border: 7px solid rgba(255,255,255,.1);
+		}
+	</style>
+	
+</head>
+
+<body>
+	<header>
+		<h1><a href="http://manos.malihu.gr/jquery-thumbnail-scroller" class="logo">jQuery thumbnail/image scroller</a></h1>
+		<hr />
+	</header>
+	
+	<div id="demo">
+		<section id="examples">
+		
+			<!-- demo content -->
+			<div id="content-1" class="content">
+				<ul>
+					<li><a href="#"><img src="thumbnails/img1.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img2.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img3.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img4.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img5.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img6.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img7.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img8.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img9.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img10.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img11.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img12.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img13.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img14.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img15.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img16.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img17.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img18.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img19.jpg" /></a></li>
+					<li><a href="#"><img src="thumbnails/img20.jpg" /></a></li>
+				</ul>
+			</div>
+			<!-- -//- -->
+			
+		</section>
+	</div>
+	
+	<footer>
+		<hr />
+		<p><a href="http://manos.malihu.gr/jquery-thumbnail-scroller">Plugin home</a> <a href="http://opensource.org/licenses/MIT">MIT License</a></p>
+	</footer>
+	
+	<!-- Google CDN jQuery with fallback to local -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="../js/minified/jquery-1.11.0.min.js"><\/script>')</script>
+	
+	<!-- plugin script -->
+	<script src="../jquery.mThumbnailScroller.js"></script>
+	
+	<script>
+		(function($){
+			$(window).load(function(){
+				
+				var loopDuration=6000;
+				
+				$("#content-1").mThumbnailScroller({
+					callbacks:{
+						onInit:function(){
+							$("#content-1").mThumbnailScroller("scrollTo","right",{duration:loopDuration/2,easing:"easeInOutSmooth"});
+						},
+						onTotalScroll:function(){
+							if($(this).data("mTS").trigger==="external"){
+								$("#content-1").mThumbnailScroller("scrollTo","left",{duration:loopDuration/2,easing:"easeInOutSmooth"});
+							}
+						}
+					}
+				});
+				
+			});
+		})(jQuery);
+	</script>
+</body>
+</html>

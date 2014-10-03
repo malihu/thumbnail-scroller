@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html lang="en" class="ie8"><![endif]-->
+<!--[if IE 9 ]><html lang="en" class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>jQuery thumbnail/image scroller demo</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!-- stylesheet for demo and examples -->
+	<link rel="stylesheet" href="style.css">
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<![endif]-->
+	
+	<!-- plugin stylesheet -->
+	<link rel="stylesheet" href="../jquery.mThumbnailScroller.css">
+	
+	<!-- demo CSS -->
+	<style>
+		.content{
+			overflow: hidden;
+			position: relative;
+			padding: 10px;
+			background: #333;
+			margin: 10px auto;
+			width: 900px;
+			height: 400px;
+		}
+		.content li{
+			padding: 20px;
+		}
+		.content li img{
+			max-width: none;
+			border: 5px solid #db581a;
+		}
+		#content-3{ 
+			padding: 40px; 
+			width: 840px;
+		}
+		#content-3 .mTSButton{ background-color: transparent; }
+	</style>
+	
+</head>
+
+<body>
+	<header>
+		<h1><a href="http://manos.malihu.gr/jquery-thumbnail-scroller" class="logo">jQuery thumbnail/image scroller</a></h1>
+		<hr />
+	</header>
+	
+	<div id="demo">
+		<section id="examples">
+			
+			<!-- demo content -->
+			<div id="content-1" class="content">
+				<ul>
+					<li><img src="images/test.jpg" /></li>
+				</ul>
+			</div>
+			<!-- -//- -->
+			
+			<!-- demo content -->
+			<div id="content-2" class="content">
+				<ul>
+					<li><img src="images/test.jpg" /></li>
+				</ul>
+			</div>
+			<!-- -//- -->
+			
+			<!-- demo content -->
+			<div id="content-3" class="content">
+				<ul>
+					<li><img src="images/test.jpg" /></li>
+				</ul>
+			</div>
+			<!-- -//- -->
+			
+		</section>
+		
+	</div>
+	
+	<footer>
+		<hr />
+		<p><a href="http://manos.malihu.gr/jquery-thumbnail-scroller">Plugin home</a> <a href="http://opensource.org/licenses/MIT">MIT License</a></p>
+	</footer>
+	
+	<!-- Google CDN jQuery with fallback to local -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="../js/minified/jquery-1.11.0.min.js"><\/script>')</script>
+	
+	<!-- plugin script -->
+	<script src="../jquery.mThumbnailScroller.js"></script>
+	
+	<script>
+		(function($){
+			$(window).load(function(){
+				
+				$("#content-1").mThumbnailScroller({
+					axis:"yx",
+					type:"hover-precise",
+					speed:17,
+					callbacks:{
+						onInit:function(){
+							// center image on initialization
+							var c=$(this.mts.content),
+								to=[
+									Math.round(Math.abs((c.height()-c.parent().height())*0.5)),
+									Math.round(Math.abs((c.width()-c.parent().width())*0.5))
+								];
+							$(this).mThumbnailScroller("scrollTo",[to[0],to[1]],{duration:500});
+						}
+					}
+				});
+				
+				$("#content-2").mThumbnailScroller({
+					axis:"yx",
+					speed:10,
+					callbacks:{
+						onInit:function(){
+							// center image on initialization
+							var c=$(this.mts.content),
+								to=[
+									Math.round(Math.abs((c.height()-c.parent().height())*0.5)),
+									Math.round(Math.abs((c.width()-c.parent().width())*0.5))
+								];
+							$(this).mThumbnailScroller("scrollTo",[to[0],to[1]],{duration:500});
+						}
+					}
+				});
+				
+				$("#content-3").mThumbnailScroller({
+					axis:"yx",
+					speed:10,
+					type:"click-40",
+					markup:{ 
+						buttonsPlaceholder:"outside", 
+						buttonsHTML:{ up:"SVG set 5", down:"SVG set 5", left:"SVG set 5", right:"SVG set 5" }
+					},
+					callbacks:{
+						onInit:function(){
+							// center image on initialization
+							var c=$(this.mts.content),
+								to=[
+									Math.round(Math.abs((c.height()-c.parent().height())*0.5)),
+									Math.round(Math.abs((c.width()-c.parent().width())*0.5))
+								];
+							$(this).mThumbnailScroller("scrollTo",[to[0],to[1]],{duration:500});
+						}
+					}
+				});
+				
+			});
+		})(jQuery);
+	</script>
+</body>
+</html>

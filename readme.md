@@ -1,7 +1,7 @@
 jQuery thumbnail/image scroller
 ================================
 
-An image scroller plugin that can be used as standalone or along side lightboxes, gallery scripts etc. Features include: 
+An image scroller that can be used as standalone or alongside lightboxes, gallery scripts etc. Features include: 
 
 * Vertical and/or horizontal scrolling  
 * Scrolling by cursor movement, buttons and/or touch 

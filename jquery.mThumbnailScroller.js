@@ -334,7 +334,8 @@ For production, use the minified jquery.mThumbnailScroller.min.js script.
 						
 						/* HTML data attributes */
 						var o=$this.data(pluginPfx).opt,
-							htmlDataType=$this.data("mts-type"),htmlDataTheme=$this.data("mts-theme");
+							htmlDataAxis=$this.data("mts-axis"),htmlDataType=$this.data("mts-type"),htmlDataTheme=$this.data("mts-theme");
+						if(htmlDataAxis){o.axis=htmlDataAxis;} /* usage example: data-mts-axis="y" */
 						if(htmlDataType){o.type=htmlDataType;} /* usage example: data-mts-type="hover-50" */
 						if(htmlDataTheme){ /* usage example: data-mts-theme="theme-name" */
 							o.theme=htmlDataTheme;
@@ -637,12 +638,12 @@ For production, use the minified jquery.mThumbnailScroller.min.js script.
 				var buttonsPlaceholderOutside=["buttons-out"],
 					buttonsHtmlSet2=["buttons-in"],
 					buttonsHtmlSet3=["buttons-out"],
-					typeHover80=["hover-classic"],
+					typeHover85=["hover-classic"],
 					typeHoverPrecise=["hover-full"];
 				obj.markup.buttonsPlaceholder=$.inArray(obj.theme,buttonsPlaceholderOutside) > -1 ? "outside" : obj.markup.buttonsPlaceholder;
 				obj.markup.buttonsHTML=$.inArray(obj.theme,buttonsHtmlSet2) > -1 ? {up:"SVG set 2",down:"SVG set 2",left:"SVG set 2",right:"SVG set 2"} : $.inArray(obj.theme,buttonsHtmlSet3) > -1 ? {up:"SVG set 3",down:"SVG set 3",left:"SVG set 3",right:"SVG set 3"} : obj.markup.buttonsHTML;
-				obj.type=$.inArray(obj.theme,typeHover80) > -1 ? "hover-85" : $.inArray(obj.theme,typeHoverPrecise) > -1 ? "hover-precise" : obj.type;
-				obj.speed=$.inArray(obj.theme,typeHover80) > -1 ? 60 : $.inArray(obj.theme,typeHoverPrecise) > -1 ? 10 : obj.speed;
+				obj.type=$.inArray(obj.theme,typeHover85) > -1 ? "hover-85" : $.inArray(obj.theme,typeHoverPrecise) > -1 ? "hover-precise" : obj.type;
+				obj.speed=$.inArray(obj.theme,typeHover85) > -1 ? 60 : $.inArray(obj.theme,typeHoverPrecise) > -1 ? 10 : obj.speed;
 			},
 			/* -------------------- */
 			
@@ -1686,10 +1687,22 @@ For production, use the minified jquery.mThumbnailScroller.min.js script.
 	*/
 	window[pluginNS]=true;
 	
+	/* call plugin fn automatically on default selector with HTML data attributes */
 	$(window).load(function(){
-		$(defaultSelector)[pluginNS](); /* call plugin fn automatically on default selector */
-		$(defaultSelector+"-y")[pluginNS]({axis:"y"});
-		$(defaultSelector+"-yx")[pluginNS]({axis:"yx"});
+		var elems=$(defaultSelector),instances=[];
+		if(elems.length){
+			elems.each(function(){
+				var elem=$(this),axis=elem.data("mts-axis") || defaults.axis,type=elem.data("mts-type") || defaults.type,theme=elem.data("mts-theme") || defaults.theme,
+					elemClass="auto-"+pluginPfx+"-"+axis+"-"+type+"-"+theme,instance=[elemClass,axis,type];
+				elem.addClass(elemClass);
+				if($.inArray(elemClass,instances)===-1){
+					instances.push(instance);
+				}
+			});
+			for(var i=0; i<instances.length; i++){
+				$("."+instances[i][0])[pluginNS]({axis:instances[i][1],type:instances[i][2]}); 
+			}
+		}
 	});
 	
 })(jQuery,window,document);

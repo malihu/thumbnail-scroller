@@ -1073,6 +1073,7 @@ For production, use the minified jquery.mThumbnailScroller.min.js script.
 					mTS_wrapper[0].rAF=null;
 				}
 				function _anim(){
+					if(touchi){return;} /* this is for android native browser (at least for version 4.1.2) */
 					to=[dest[0]+mTS_container[0].offsetTop,dest[1]+mTS_container[0].offsetLeft];
 					var limit=[mTS_wrapper.height()-mTS_container.height(),mTS_wrapper.width()-mTS_container.width()];
 					if(o.axis!=="x" && d.overflowed[0]){

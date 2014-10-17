@@ -163,7 +163,6 @@ For production, use the minified jquery.mThumbnailScroller.min.js script.
 			/* 
 			scroller theme 
 			values: string 
-			ready-to-use themes: "none", "dark", "light-2", "dark-2", "light-3", "dark-3"
 			*/
 			theme:"none",
 			/*
@@ -465,6 +464,7 @@ For production, use the minified jquery.mThumbnailScroller.min.js script.
 								speed:o.speed, /* scrolling speed */
 								duration:1000, /* animation duration */
 								easing:"easeInOut", /* animation easing */
+								timeout:60, /* scroll-to delay */
 								callbacks:true, /* enable/disable callbacks */
 								onStart:true,
 								onUpdate:true,
@@ -491,7 +491,7 @@ For production, use the minified jquery.mThumbnailScroller.min.js script.
 								methodOptions.overwrite="none";
 								functions._scrollTo.call(this,$this,-to[1].toString(),methodOptions);
 							}
-						},60);
+						},methodOptions.timeout);
 						
 					}
 					

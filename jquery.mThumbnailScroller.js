@@ -1,6 +1,6 @@
 /*
 == malihu jquery thumbnail scroller plugin == 
-Version: 2.0.1 
+Version: 2.0.2 
 Plugin URI: http://manos.malihu.gr/jquery-thumbnail-scroller 
 Author: malihu
 Author URI: http://manos.malihu.gr
@@ -358,6 +358,7 @@ For production, use the minified jquery.mThumbnailScroller.min.js script.
 							if(!d.overflowed[0]){ /* y scrolling is not required */
 								_resetContentPosition.call(this); /* reset content position */
 								if(o.axis==="y"){
+									_scrollTo($this,"0",{dir:"y",dur:0,overwrite:"none"});
 									_unbindEvents.call(this);
 								}else if(o.axis==="yx" && d.overflowed[1]){
 									_scrollTo($this,to[1].toString(),{dir:"x",dur:0,overwrite:"none"});
@@ -370,6 +371,7 @@ For production, use the minified jquery.mThumbnailScroller.min.js script.
 							if(!d.overflowed[1]){ /* x scrolling is not required */
 								_resetContentPosition.call(this); /* reset content position */
 								if(o.axis==="x"){
+									_scrollTo($this,"0",{dir:"x",dur:0,overwrite:"none"});
 									_unbindEvents.call(this);
 								}else if(o.axis==="yx" && d.overflowed[0]){
 									_scrollTo($this,to[0].toString(),{dir:"y",dur:0,overwrite:"none"});

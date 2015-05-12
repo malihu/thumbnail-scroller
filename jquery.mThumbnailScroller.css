@@ -128,7 +128,7 @@ CONTENTS:
 	}
 
 	.mTSButton.mTS-hidden, 
-    .mThumbnailScroller.mTS_no_scroll .mTSButton{
+	.mThumbnailScroller.mTS_no_scroll .mTSButton{
 		/* hide button effect (fades-out button to zero size) */
 		opacity: 0;
 		height: 0;

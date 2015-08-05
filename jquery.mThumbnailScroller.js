@@ -1,6 +1,6 @@
 /*
 == malihu jquery thumbnail scroller plugin == 
-Version: 2.0.2 
+Version: 2.0.3 
 Plugin URI: http://manos.malihu.gr/jquery-thumbnail-scroller 
 Author: malihu
 Author URI: http://manos.malihu.gr
@@ -886,6 +886,7 @@ For production, use the minified jquery.mThumbnailScroller.min.js script.
 				durA=0,durB,overwrite=o.axis==="yx" ? "none" : "all",touchIntent=[];
 			mTS_container.bind("touchstart."+namespace+" pointerdown."+namespace+" MSPointerDown."+namespace,function(e){
 				if(!_pointerTouch(e) || touchActive){return;}
+				$this.removeClass("mTS_touch_action");
 				var offset=mTS_container.offset();
 				dragY=_coordinates(e)[0]-offset.top;
 				dragX=_coordinates(e)[1]-offset.left;
@@ -907,7 +908,7 @@ For production, use the minified jquery.mThumbnailScroller.min.js script.
 					var limitX=mTS_wrapper.width()-mTS_container.width(),
 						preventX=((dragX-x)>0 && (x-dragX)>limitX && (touchIntent[2]*2<touchIntent[3]));
 				}
-				if(prevent || preventX){e.preventDefault();} /* prevent native document scrolling */
+				if(prevent || preventX){e.preventDefault();}else{$this.addClass("mTS_touch_action");} /* prevent native document scrolling */
 				amount=o.axis==="yx" ? [(dragY-y),(dragX-x)] : o.axis==="x" ? [null,(dragX-x)] : [(dragY-y),null];
 				mTS_container[0].idleTimer=250;
 				if(d.overflowed[0]){_drag(amount[0],durA,easing,"y","all");}
@@ -1254,6 +1255,11 @@ For production, use the minified jquery.mThumbnailScroller.min.js script.
 			upd();
 			function upd(){
 				clearTimeout(mTS_container[0].autoUpdate);
+				if($this.parents("html").length===0){
+					/* check element in dom tree */
+					$this=null;
+					return;
+				}
 				mTS_container[0].autoUpdate=setTimeout(function(){
 					/* update on specific selector(s) length and size change */
 					if(o.advanced.updateOnSelectorChange){

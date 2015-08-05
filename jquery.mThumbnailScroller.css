@@ -22,7 +22,7 @@ CONTENTS:
 */
 
 	.mThumbnailScroller{ -ms-touch-action: none; touch-action: none; /* MSPointer events - direct all pointer events to js */ }
-	.mThumbnailScroller.mTS_no_scroll{ -ms-touch-action: auto; touch-action: auto; }
+	.mThumbnailScroller.mTS_no_scroll, .mThumbnailScroller.mTS_touch_action{ -ms-touch-action: auto; touch-action: auto; }
 
 	.mTSWrapper{
 		position: relative;

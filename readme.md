@@ -27,14 +27,8 @@ jQuery version **1.6.0** or higher
 Browser compatibility
 -------------------------
 
+* All modern browsers (desktop and mobile)
 * Internet Explorer 8+ 
-* Firefox 
-* Chrome 
-* Opera 
-* Safari  
-* iOS 
-* Android 
-* Windows Phone
 
 License 
 -------------------------
